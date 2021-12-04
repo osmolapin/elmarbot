@@ -1,13 +1,19 @@
-import discord
+import discord, discordRadio, sys
 from discord.ext import commands
-import discordRadio
 
 #elmar url
 skyplus_url = "https://skymedia.babahhcdn.com/SKYPLUS_boadcast"
 elmar_url = "https://router.euddn.net/8103046e16b71d15d692b57c187875c7/elmar.mp3"
 
-file = open("TOKEN.txt", 'r')
-TOKEN = file.read()
+try:
+    file = open("TOKEN.txt", "r")
+    TOKEN = file.read()
+except:
+    print("Puudub fail nimega 'TOKEN.txt'\n Luuakse fail\n Sisestage sinna Boti token.")
+    file = open("TOKEN.txt", "w")
+    file.write("Kustutada kõik ära ja kopeerida token 1. reale")
+    file.close()
+    sys.exit()
 
 client = commands.Bot(command_prefix = '.')
 
