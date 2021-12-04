@@ -1,19 +1,10 @@
-import discord, discordRadio, sys
+import discord, discordRadio, sys, check
 from discord.ext import commands
 
-#elmar url
 skyplus_url = "https://skymedia.babahhcdn.com/SKYPLUS_boadcast"
 elmar_url = "https://router.euddn.net/8103046e16b71d15d692b57c187875c7/elmar.mp3"
 
-try:
-    file = open("TOKEN.txt", "r")
-    TOKEN = file.read()
-except:
-    print("Puudub fail nimega 'TOKEN.txt'\n Luuakse fail\n Sisestage sinna Boti token.")
-    file = open("TOKEN.txt", "w")
-    file.write("Kustutada kõik ära ja kopeerida token 1. reale")
-    file.close()
-    sys.exit()
+TOKEN = check.isFile()
 
 client = commands.Bot(command_prefix = '.')
 
@@ -42,24 +33,10 @@ async def lahku(ctx):
 
 @client.command()
 async def laula(ctx):
-    #proovib kas mängib, siis is_playing = True
-    try:
-        if ctx.voice_client.is_playing():
-            is_playing = True
-    #kui ei mängi või viskab errori, siis is_playing = False
-    except:
-        is_playing = False
-
-    await discordRadio.play(ctx, elmar_url, ctx.guild.voice_client in client.voice_clients, is_playing, "elmar")
+    await discordRadio.play(ctx, elmar_url, await check.inVoice(ctx, client), await check.isPlaying(ctx), "elmar")
 
 @client.command()
 async def skyplus(ctx):
-    try:
-        if ctx.voice_client.is_playing():
-            is_playing = True
-    except:
-        is_playing = False
-
-    await discordRadio.play(ctx, skyplus_url, ctx.guild.voice_client in client.voice_clients, is_playing, "skyplus")
+    await discordRadio.play(ctx, skyplus_url, await check.inVoice(ctx, client), await check.isPlaying(ctx), "skyplus")
 
 client.run(TOKEN)
