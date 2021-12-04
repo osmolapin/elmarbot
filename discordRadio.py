@@ -1,4 +1,4 @@
-import discord
+import discord, sys
 from discord.ext import commands
 
 client = commands.Bot(command_prefix = '.')
@@ -31,3 +31,7 @@ async def play(ctx, url, in_voice, is_playing, name):
         await ctx.send("Davai!")
     elif name.lower() == "skyplus":
         await ctx.send('Elmar on parem!')
+
+if __name__ == '__main__':
+    print("Käivita main.py fail")
+    sys.exit()
