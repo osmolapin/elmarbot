@@ -24,7 +24,7 @@ async def abi(ctx):
   
 @client.command()
 async def lahku(ctx):
-    if not ctx.guild.voice_client in client.voice_clients:
+    if not await check.inVoice(ctx, client):
         await ctx.send("Ma olen juba lahkunud tola!")
     else:
         print("Leaving voice channel")
