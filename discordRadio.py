@@ -16,22 +16,15 @@ async def play(ctx, url, in_voice, is_playing, name):
     if is_playing:
         ctx.voice_client.stop()
 
-    #konsooli input
-    if name.lower() == "elmar":
-        print("Playing Elmar")
-    elif name.lower() == "skyplus":
-        print("Playing Skyplus")
+    print("Playing", name.capitalize())
 
     #hakkab mängima
     async with ctx.typing():
         ctx.voice_client.play(discord.FFmpegPCMAudio(url), after=lambda e: print('Player error: %s' % e) if e else None)
 
     #tagasiside kasutajale
-    if name.lower() == "elmar":
-        await ctx.send("Davai!")
-    elif name.lower() == "skyplus":
-        await ctx.send('Elmar on parem!')
-
+    await ctx.send("Mängin " + name.capitalize())
+    
 if __name__ == '__main__':
     print("Käivita main.py fail")
     sys.exit()
