@@ -1,8 +1,8 @@
-import discord, discordRadio, check
+import discord, player, check, video_url
 from discord.ext import commands
 from random import randint
 
-skyplus_url = "https://skymedia.babahhcdn.com/SKYPLUS_boadcast"
+skyplus_url = "https://skymedia-live.bitflip.ee/SKYPLUS"
 elmar_url = "https://router.euddn.net/8103046e16b71d15d692b57c187875c7/elmar.mp3"
 ringfm_url = "https://ringfm.babahhcdn.com/ringfm"
 
@@ -15,6 +15,16 @@ async def on_ready():
     activity = discord.Game(name="Raadio Elmar", type=2)
     await client.change_presence(status=discord.Status.online, activity=activity)
     print("Bot online")
+
+@client.event
+async def on_message(msg):
+    ctx = await client.get_context(msg)
+
+    if ".mangi" in msg.content:
+        info, url = video_url.get(msg.content)
+        await player.play(ctx, url, await check.inVoice(ctx, client), await check.isPlaying(ctx), info["title"])
+
+    await client.process_commands(msg)
 
 @client.command()
 async def abi(ctx):
@@ -36,15 +46,15 @@ async def lahku(ctx):
 
 @client.command()
 async def laula(ctx):
-    await discordRadio.play(ctx, elmar_url, await check.inVoice(ctx, client), await check.isPlaying(ctx), "elmar")
+    await player.play(ctx, elmar_url, await check.inVoice(ctx, client), await check.isPlaying(ctx), "elmar")
 
 @client.command()
 async def skyplus(ctx):
-    await discordRadio.play(ctx, skyplus_url, await check.inVoice(ctx, client), await check.isPlaying(ctx), "skyplus")
+    await player.play(ctx, skyplus_url, await check.inVoice(ctx, client), await check.isPlaying(ctx), "skyplus")
 
 @client.command()
 async def ringfm(ctx):
-    await discordRadio.play(ctx, ringfm_url, await check.inVoice(ctx, client), await check.isPlaying(ctx), "ring Fm")
+    await player.play(ctx, ringfm_url, await check.inVoice(ctx, client), await check.isPlaying(ctx), "ring Fm")
 
 @client.command()
 async def munn(ctx):
@@ -52,12 +62,7 @@ async def munn(ctx):
     await ctx.send("Sul on: " + str(size) + " cm.")
 
 @client.command()
-async def tarmo(message):
-    channel = message.channel
-    num = randint(0,11)
-    if num < 9:
-        await channel.send("Jah")
-    else:
-        await channel.send("Ei")
+async def mangi(ctx):
+    pass
 
 client.run(TOKEN)

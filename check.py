@@ -1,4 +1,4 @@
-import discord, discordRadio, sys
+import discord, player, sys
 from discord.ext import commands
 
 def isFile():
