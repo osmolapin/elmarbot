@@ -23,7 +23,7 @@ async def on_message(msg):
     if ".mangi" in msg.content:
         info, url = video_url.get(msg.content)
         await player.play(ctx, url, await check.inVoice(ctx, client), await check.isPlaying(ctx), info["title"])
-
+    
     await client.process_commands(msg)
 
 @client.command()
