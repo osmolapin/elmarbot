@@ -35,6 +35,8 @@ async def abi(ctx):
     embed.add_field(name=".laula", value="- Laulab parimat raadiot maailmas.", inline=False) 
     embed.add_field(name=".skyplus", value="- Laulab mitte nii head raadiot kui Raadio Elmar.", inline=False) 
     embed.add_field(name=".ringfm", value="- Laulab kõige lambisemat raadiot.", inline=False) 
+    embed.add_field(name=".rockfm", value="- Laulab rock efem.", inline=False) 
+    embed.add_field(name=".vombafm", value="- Laulab võmbast.", inline=False) 
     embed.add_field(name=".lahku", value="- Lahkub kõnest.", inline=False) 
     await ctx.send(embed=embed)
   
