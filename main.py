@@ -5,6 +5,9 @@ from random import randint
 skyplus_url = "https://skymedia-live.bitflip.ee/SKYPLUS"
 elmar_url = "https://router.euddn.net/8103046e16b71d15d692b57c187875c7/elmar.mp3"
 ringfm_url = "https://ringfm.babahhcdn.com/ringfm"
+rockfm_url = "https://skymedia-live.bitflip.ee/rck"
+vombafm_url = "http://c4.radioboss.fm:8123/live"
+
 
 TOKEN = check.isFile()
 
@@ -57,9 +60,12 @@ async def ringfm(ctx):
     await player.play(ctx, ringfm_url, await check.inVoice(ctx, client), await check.isPlaying(ctx), "ring Fm")
 
 @client.command()
-async def munn(ctx):
-    size = randint(11,21)
-    await ctx.send("Sul on: " + str(size) + " cm.")
+async def rockfm(ctx):
+    await player.play(ctx, rockfm_url, await check.inVoice(ctx, client), await check.isPlaying(ctx), "rock Fm")
+
+@client.command()
+async def vombafm(ctx):
+    await player.play(ctx, vombafm_url, await check.inVoice(ctx, client), await check.isPlaying(ctx), "Võmba Fm")
 
 @client.command()
 async def mangi(ctx):
