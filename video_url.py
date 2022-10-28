@@ -1,4 +1,4 @@
-import youtube_dl, json
+import youtube_dl, json, sys
 from youtube_search import YoutubeSearch
 
 def get(input_text):
@@ -17,3 +17,7 @@ def get(input_text):
         url2 = info['formats'][0]['url']
 
     return info, url2
+
+if __name__ == '__main__':
+    print("Käivita main.py fail")
+    sys.exit()
