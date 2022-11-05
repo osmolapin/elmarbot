@@ -13,7 +13,6 @@ def get(input_text):
     ydl_opts = {'format':"bestaudio"}
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         info = ydl.extract_info(url, download=False)
-        print(info)
         url2 = info['formats'][0]['url']
 
     return info, url2

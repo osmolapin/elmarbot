@@ -51,19 +51,19 @@ async def lahku(ctx):
 
 @client.command()
 async def laula(ctx):
-    await player.play(ctx, elmar_url, await check.inVoice(ctx, client), await check.isPlaying(ctx), "elmar")
+    await player.play(ctx, elmar_url, await check.inVoice(ctx, client), await check.isPlaying(ctx), "Elmar")
 
 @client.command()
 async def skyplus(ctx):
-    await player.play(ctx, skyplus_url, await check.inVoice(ctx, client), await check.isPlaying(ctx), "skyplus")
+    await player.play(ctx, skyplus_url, await check.inVoice(ctx, client), await check.isPlaying(ctx), "Skyplus")
 
 @client.command()
 async def ringfm(ctx):
-    await player.play(ctx, ringfm_url, await check.inVoice(ctx, client), await check.isPlaying(ctx), "ring Fm")
+    await player.play(ctx, ringfm_url, await check.inVoice(ctx, client), await check.isPlaying(ctx), "Ring Fm")
 
 @client.command()
 async def rockfm(ctx):
-    await player.play(ctx, rockfm_url, await check.inVoice(ctx, client), await check.isPlaying(ctx), "rock Fm")
+    await player.play(ctx, rockfm_url, await check.inVoice(ctx, client), await check.isPlaying(ctx), "Rock Fm")
 
 @client.command()
 async def vombafm(ctx):

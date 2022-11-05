@@ -28,7 +28,7 @@ async def play(ctx, url, in_voice, is_playing, name):
         ctx.voice_client.play(discord.FFmpegPCMAudio(url, **FFMPEG_OPTIONS), after=lambda e: print('Player error: %s' % e) if e else None)
 
     #tagasiside kasutajale
-    await ctx.send(":musical_note: Mängin **" + name.capitalize() + "**")
+    await ctx.send(":musical_note: Mängin **" + name + "**")
     
 if __name__ == '__main__':
     print("Käivita main.py fail")
