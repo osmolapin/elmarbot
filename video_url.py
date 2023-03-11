@@ -1,4 +1,5 @@
-import youtube_dl, json, sys
+import yt_dlp as youtube_dl
+import json, sys
 from youtube_search import YoutubeSearch
 
 def get(input_text):
@@ -13,7 +14,7 @@ def get(input_text):
     ydl_opts = {'format':"bestaudio"}
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         info = ydl.extract_info(url, download=False)
-        url2 = info['formats'][0]['url']
+        url2 = info['formats'][7]['url']
 
     return info, url2
 

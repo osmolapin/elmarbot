@@ -2,11 +2,11 @@ import discord, player, check, video_url
 from discord.ext import commands
 from random import randint
 
-skyplus_url = "https://skymedia-live.bitflip.ee/SKYPLUS"
-elmar_url = "https://router.euddn.net/8103046e16b71d15d692b57c187875c7/elmar.mp3"
-ringfm_url = "https://ringfm.babahhcdn.com/ringfm"
-rockfm_url = "https://skymedia-live.bitflip.ee/rck"
-vombafm_url = "http://c4.radioboss.fm:8123/live"
+SKYPLUS_URL = "https://skymedia-live.bitflip.ee/SKYPLUS"
+ELMAR_URL = "https://router.euddn.net/8103046e16b71d15d692b57c187875c7/elmar.mp3"
+RINGFM_URL = "https://sc2.treraadio.ee/ringfm"
+ROCKFM_URL = "https://skymedia-live.bitflip.ee/rck"
+VOMBAFM_URL = "http://c4.radioboss.fm:8123/live"
 
 
 TOKEN = check.isFile()
@@ -36,7 +36,8 @@ async def abi(ctx):
     embed.add_field(name=".skyplus", value="- Laulab mitte nii head raadiot kui Raadio Elmar.", inline=False) 
     embed.add_field(name=".ringfm", value="- Laulab kõige lambisemat raadiot.", inline=False) 
     embed.add_field(name=".rockfm", value="- Laulab rock efem.", inline=False) 
-    embed.add_field(name=".vombafm", value="- Laulab võmbast.", inline=False) 
+    embed.add_field(name=".vombafm", value="- Laulab võmbast.", inline=False)
+    embed.add_field(name=".mangi", value="- Mängib youtube lingi järgi või otsib video ja mängib seda.", inline=False) 
     embed.add_field(name=".lahku", value="- Lahkub kõnest.", inline=False) 
     await ctx.send(embed=embed)
   
@@ -51,23 +52,23 @@ async def lahku(ctx):
 
 @client.command()
 async def laula(ctx):
-    await player.play(ctx, elmar_url, await check.inVoice(ctx, client), await check.isPlaying(ctx), "Elmar")
+    await player.play(ctx, ELMAR_URL, await check.inVoice(ctx, client), await check.isPlaying(ctx), "Elmar")
 
 @client.command()
 async def skyplus(ctx):
-    await player.play(ctx, skyplus_url, await check.inVoice(ctx, client), await check.isPlaying(ctx), "Skyplus")
+    await player.play(ctx, SKYPLUS_URL, await check.inVoice(ctx, client), await check.isPlaying(ctx), "Skyplus")
 
 @client.command()
 async def ringfm(ctx):
-    await player.play(ctx, ringfm_url, await check.inVoice(ctx, client), await check.isPlaying(ctx), "Ring Fm")
+    await player.play(ctx, RINGFM_URL, await check.inVoice(ctx, client), await check.isPlaying(ctx), "Ring Fm")
 
 @client.command()
 async def rockfm(ctx):
-    await player.play(ctx, rockfm_url, await check.inVoice(ctx, client), await check.isPlaying(ctx), "Rock Fm")
+    await player.play(ctx, ROCKFM_URL, await check.inVoice(ctx, client), await check.isPlaying(ctx), "Rock Fm")
 
 @client.command()
 async def vombafm(ctx):
-    await player.play(ctx, vombafm_url, await check.inVoice(ctx, client), await check.isPlaying(ctx), "Võmba Fm")
+    await player.play(ctx, VOMBAFM_URL, await check.inVoice(ctx, client), await check.isPlaying(ctx), "Võmba Fm")
 
 @client.command()
 async def mangi(ctx):
