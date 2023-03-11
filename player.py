@@ -8,8 +8,7 @@ FFMPEG_OPTIONS = {
 
 client = commands.Bot(command_prefix = '.')
 
-#ctx - bot, url - raadio url (string) , in_voice - kas on kõnes(boolean) , is_playing - kas mängib(boolean) , name - raadio nimi(boolean)
-async def play(ctx, url, in_voice, is_playing, name):
+async def play(ctx, url: str, in_voice: bool, is_playing: bool, name: str):
 
     #joinib voice kanalisse
     if not in_voice:

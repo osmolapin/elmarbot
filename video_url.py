@@ -16,7 +16,7 @@ def get(input_text):
         info = ydl.extract_info(url, download=False)
         url2 = info['formats'][7]['url']
 
-    return info, url2
+    return info["title"], url2
 
 if __name__ == '__main__':
     print("Käivita main.py fail")
